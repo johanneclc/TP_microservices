@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Temperatures</title>
+</head>
+<body>
+<h1> Show, modify and delete Account</h1>
+	
+    <a href="/newAccount">Create New Account</a>
+    
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Iban</th>
+                <th>Money</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.account_id}">Product ID</td>
+                <td th:text="${account.iban}">Iban</td>
+                <td th:text="${account.somme}">Money</td>
+                <td>
+                    <a th:href="/@{'/edit/' + ${account.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/' + ${account.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<!--  <ul th:if="${account}!=null"  th:each=" a : ${account}">	
+	
+		<li th:text="${account.iban}"></li>
+		<li th:text="${account.somme}"></li>
+		<li th:text="${account.account_id}"></li>
+		<form method='delete' action='#' th:action="@{/account/}">
+			<button type='submit' th:name="region" th:value="${c.id}" value='Check'>Delete</button>
+		</form>
+	</ul >
+	-->
+	
+	<!--  <h1>Create Account</h1>
+	<form method='post' action='#' th:action="@{/account}">
+		<div>
+			<input type="text" placeholder="FR7612548029989876543210917" id="iban" name="iban">
+			<input type="text" placeholder="somme" id="somme" name="somme">
+		</div>
+		<button type='submit' value='Ajouter'>Add</button>
+	</form>-->
+	
+	<!--  <h1>Afficher transactions du compte spécifié </h1>
+	<form method='get' action='#' th:action="@{/account}${account.account_id}@{/transaction}">
+		<button type='submit' value='Check'>Show</button>
+		<ul th:if="${transaction}!=null"  th:each=" t : ${transaction}">	
+			<li th:text="${t.}"></li>
+		</ul >
+	</form>-->
+
+</body>
+</html>
